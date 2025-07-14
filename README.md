@@ -12,3 +12,15 @@ Just a repository of things for Gigamon. Starting off with some helpful commands
     </td>
   </tr>
 </table>
+
+## Troubleshooting
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/PudgyDragon/Gigamon/blob/main/RADIUS.md">RADIUS Authentation Issues</a>
+    </td>
+    <td>
+      <p>Noticed issues between the FM and nodes when RADIUS is set to first priority. Troubleshooting guide for if you did this as well.</p>
+    </td>
+  </tr>
+</table>
