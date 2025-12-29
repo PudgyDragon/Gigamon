@@ -79,9 +79,81 @@ sure it's a .crt extension. Once you have this created, SCP it and the .key file
       systemctl status httpd.service
 </code></pre>
 
-<h4>Fin</h4>
-<p>That's all that should need to be done for the FM. I will post the guide for the nodes below.</p>
+<p>That's all that should need to be done for the FM. The installation for the nodes can be found below.</p>
 
 
 <h2>Gigamon Nodes</h2>
-<p>In Progress</p>
+<p>The nodes will be a little different than the FM. Again, using multiple guides to create my own that worked. Whether or not you need to do everything I did is another story.</p>
+
+<h3>Pre-Requisites</h3>
+<h4>Root/Intermediate Certs</h4>
+<p>On the FM GUI, you will need to add the Root and CA certs to the device. In theory, adding the device on the FM will push it to the nodes. Make sure to add all Root and CA certs in your nodes chain.</p>
+<pre><code>
+  Settings Cog > System > Certificates > CA List > Add
+  
+</code></pre>
+<p>The next part is what I'm not sure is needed or not, but I did it anyway. On the FM, add the Root and Intermediate certs to the Security CA list on the FM GUI</p>
+<pre><code>
+  Inventory > Resources > Security > CA List > Add
+  
+</code></pre>
+<p>Add the custom certificate and key pairs for each node to the Custom SSL Certificate tab</p>
+<pre><code>
+  Inventory > Resources > Security > Custom SSL Certificate > Add
+  
+</code></pre>
+<p>Add the Root and Intermediate certs to the Trust Store</p>
+<pre><code>
+  Settings Cog > System > Certificates > Trust Store > Add
+  
+</code></pre>
+<p>Once you've added all of these, you can verify that the FM has pushed the Root and Intermediate CA to each device by logging into the CLI of your node and running the 
+following commands</p>
+<pre><code>
+  enable
+  config t
+  show crypto certificate ca-list
+  
+</code></pre>
+<p>This should give you a list of the root/intermediate certs on that device.</p>
+
+<h3>Crypto Commands</h3>
+<p>Once you have the pre-requisites done, you can move on to running the commands to install the new certs and keys</p>
+<p>With a text editor like Notepad++, open your certificate and key files to view the content. Keep in mind that you will be copy/pasting these into the command line.
+  Login to the node you're going to replace the TLS certificate on and install the new certficiate with the following commands</p>
+<pre><code>
+  # If you started a new session, run these commands
+      enable
+      config t
+  # Create the public-cert pem
+      crypto certificate name pudgy_cert public-cert pem "(enter after quote)
+      (copy/paste certificate details, including begin/end section)
+      (enter)
+      " (last thing will be a finishing quote, then press enter)
+  # Link private key to the pem certificate you just created
+      crypto certificate name pudgy_cert private-key pem "(enter after quote)
+      (copy/paste key details, including begin/end section)
+      (enter)
+      " (last thing will be a finishing quote, then press enter
+  
+</code></pre>
+<p>Once you have created the certificate and linked the key to it, you can make it the default certificate for the node to use</p>
+<pre><code>
+  crypto certificate default-cert name pudgy_cert
+  web https certificate name pudgy_cert
+  
+</code></pre>
+
+<h3>Verify</h3>
+<p>Go to your browser now and navigate to the nodes address. While you can't manage it from the browser, you can still reach it and see if the cert 
+has been applied correctly. You can also verify that the new cert is being used by default with the following command</p>
+<pre><code>
+  show crypto certificate default-cert public-pem
+</code></pre>
+
+
+<h2>Finished</h2>
+<p>That should be all there is to it. Hopefully it helps.</p>
+
+
+
