@@ -1,7 +1,8 @@
-# Gigamon
-Just a repository of things for Gigamon. Starting off with some helpful commands I had to figure out for myself.
+<h1>Gigamon</h1>
+<p>Repository for Gigamon guides, commands, and troubleshooting. I'm just a noob. Don't hate me.</p>
 
-## Guides
+<h1>Table of Contents</h1>
+<h2>Guides</h2>
 <table>
   <tr>
     <td>
@@ -21,7 +22,7 @@ Just a repository of things for Gigamon. Starting off with some helpful commands
   </tr>
 </table>
 
-## Troubleshooting
+<h2>Troubleshooting</h2>
 <table>
   <tr>
     <td>
