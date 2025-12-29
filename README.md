@@ -5,6 +5,14 @@ Just a repository of things for Gigamon. Starting off with some helpful commands
 <table>
   <tr>
     <td>
+      <a href="https://github.com/PudgyDragon/Gigamon/blob/main/TLS_Cert_Install.md">TLS Certificate Installation</a>
+    </td>
+    <td>
+      <p>This is a guide for installing custom certificates onto your Gigamon FM and Nodes.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <a href="https://github.com/PudgyDragon/Gigamon/blob/main/commands.md">Helpful Commands</a>
     </td>
     <td>
