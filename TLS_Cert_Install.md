@@ -84,6 +84,12 @@ sure it's a .crt extension. Once you have this created, SCP it and the .key file
 
 <h2>Gigamon Nodes</h2>
 <p>The nodes will be a little different than the FM. Again, using multiple guides to create my own that worked. Whether or not you need to do everything I did is another story.</p>
+<p>IMPORTANT: If you get an SSL cipher error after applying the certificates, you may have a setting enabled that is causing it. I discovered that having Secure Crytography Enchanced enabled can cause communication issues. To make sure it's disabled, you can find it here on the GUI</p>
+<pre><code>
+  Inventory > Nodes > Select Node > Settings > Global Settings > Secure Crytography Enhanced
+  
+</code></pre>
+<p>Note: Messing with this setting will reboot the device.</p>
 
 <h3>Pre-Requisites</h3>
 <h4>Root/Intermediate Certs</h4>
