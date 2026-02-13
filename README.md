@@ -6,6 +6,14 @@
 <table>
   <tr>
     <td>
+      <a href="https://github.com/PudgyDragon/Gigamon/blob/main/Guides/UpgradeGuide.md">Upgrade Guide</a>
+    </td>
+    <td>
+      <p>This is a guide for upgrading your FM and Nodes.</p>
+    </td>
+  </tr>
+  <tr>
+    <td>
       <a href="https://github.com/PudgyDragon/Gigamon/blob/main/Guides/TLS_Cert_Install.md">TLS Certificate Installation</a>
     </td>
     <td>
